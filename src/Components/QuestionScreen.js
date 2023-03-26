@@ -14,18 +14,24 @@ function QuestionScreen() {
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [result, setResult] = useState(0);
 
-    // console.log(selectedAnswerIndex);
-
     const [showResult, setShowResult] = useState(false);
 
     const [timeRemaining, setTimeRemaining] = useState(60);
     const [timeTaken, setTimeTaken] = useState(null);
+    const [intervalId, setIntervalId] = useState(null);
+
+    console.log(timeRemaining, timeTaken);
 
     // -----------------------------function for leading zero in active queston status---------------------------
     const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
 
     // -----------------------------Get Active question number and question details---------------------------
     const handleClick = () => {
+
+        if (activeQuestion === questions.length - 1){
+            clearInterval(intervalId);
+        }
+
         setTimeTaken((prev) => prev + (60 - timeRemaining));
         // ------------------reset checked radio button-----------
         let radioButtons = document.getElementsByName('list');
@@ -62,8 +68,9 @@ function QuestionScreen() {
       const timer = setInterval(() => {
         setTimeRemaining((prevTime) => prevTime - 1);
       }, 1000);
+      setIntervalId(timer);
       return () => clearInterval(timer);
-    }, [activeQuestion]);
+    }, []);
 
     // -------------------------------Auto submit after 1 min-------------------------
 
