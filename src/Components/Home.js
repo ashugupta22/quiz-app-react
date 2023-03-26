@@ -2,12 +2,15 @@ import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
+import QuestionData from './QuestionData';
 import './home.css';
 
 function Home(){
 
     const [openModal, setOpenModal] = useState(false);
     const navigate = useNavigate();
+
+    const {topic, details} = QuestionData;
 
     return(
         <>
@@ -18,7 +21,7 @@ function Home(){
                     <div className='quiz-image'>
                         <img src='images/excel-bg.jpeg' alt='quiz'></img>
                     </div>
-                    <h2 className='hide-heading-lg'>The Daily MS Excel Quiz</h2>
+                    <h2 className='hide-heading-lg'>{topic}</h2>
                     <div className='quiz-comment-share'>
                         <ul>
                             <li><a href='test'><img src='images/comment.png' alt='comment'></img> Leave a Comment</a></li>
@@ -31,7 +34,7 @@ function Home(){
                         <p>3 Ratings (5)</p>
                     </div>
                     </div>
-                    <p className='pt-2'>The Microsoft Excel Proficiency Test is a comprehensive evaluation of an individual's knowledge and skills in using Microsoft Excel. The test covers a wide range of topics, including data manipulation, formatting, functions, and more</p>
+                    <p className='pt-2'>{details}</p>
                 </div>
                 <div className='quiz-details'>
                 <h2 className='hide-heading'>The Daily MS Excel Quiz</h2>
@@ -52,7 +55,7 @@ function Home(){
                 <h2>Quiz Rules</h2>
                 <div>
                     <div><img className='circle-quiz-rule' src='images/clock.png' alt='timer'></img></div> 
-                    <div><h4>10 MINS</h4><p>Keep in mind that it's a time-bound quiz</p></div>
+                    <div><h4>05 MINS</h4><p>Keep in mind that it's a time-bound quiz</p></div>
                 </div>
                 <div>
                     <div><img className='circle-quiz-rule' src='images/help.png' alt='question'></img></div> 

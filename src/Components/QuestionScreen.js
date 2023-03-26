@@ -14,6 +14,8 @@ function QuestionScreen() {
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [result, setResult] = useState(0);
 
+    // console.log(selectedAnswerIndex);
+
     const [showResult, setShowResult] = useState(false);
 
     const [timeRemaining, setTimeRemaining] = useState(60);
@@ -25,8 +27,14 @@ function QuestionScreen() {
     // -----------------------------Get Active question number and question details---------------------------
     const handleClick = () => {
         setTimeTaken((prev) => prev + (60 - timeRemaining));
+        // ------------------reset checked radio button-----------
+        let radioButtons = document.getElementsByName('list');
+        for (var i = 0; i < radioButtons.length; i++) {
+          radioButtons[i].checked = false;
+        };
 
         setSelectedAnswerIndex(null);
+
         setResult((prev) => selectedAnswer ? (prev + 1) : prev);
         setTimeRemaining(60);
 
@@ -74,6 +82,7 @@ function QuestionScreen() {
                         <h4 className="status-background bg-lgreen"><span>{addLeadingZero(activeQuestion + 1)}</span><span> / </span> <span>{addLeadingZero(questions.length)}</span></h4>
                         <h4><span>Time Left:</span> <span className={timeRemaining <= 20 ? 'time-warning status-background' : 'status-background bg-lblue'}>{timeRemaining}</span></h4>
                     </div>
+                    <div className='container-inner'>
                     <div className='question'>{question}</div>
                     <ul className='option-container'>
                         {choices.map((option, index) => (
@@ -85,6 +94,7 @@ function QuestionScreen() {
     
                         ))}
                     </ul>
+                    </div>
                 </div>
                 <Footer disabled={selectedAnswerIndex === null}  onClick={handleClick} name = {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'} />
             </div>) :

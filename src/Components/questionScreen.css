@@ -57,7 +57,8 @@ input[type=radio] {
         max-width: 900px;
         margin: auto;
     }
-    .option-container{
-        width: 70%;
+    .container-inner{
+        width: 80%;
+        margin: auto;
     }
 }

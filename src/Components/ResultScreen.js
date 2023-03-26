@@ -16,6 +16,7 @@ function ResultScreen({ score, totalScore, timeTaken }) {
 
         return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     }
+    const totalTime = formatTime(timeTaken);
 
     return (
         <div className='result-container'>
@@ -36,13 +37,13 @@ function ResultScreen({ score, totalScore, timeTaken }) {
                     </div>
                     <div>
                         <h4>Time Taken</h4>
-                        <h2>{formatTime(timeTaken)} min</h2>
+                        <h2>{totalTime} min</h2>
                         {/* <h5>Avg: 1:59 mins</h5> */}
                     </div>
                 </div>
                 <div className="result-share">
                     <h2>Quiz App</h2>
-                    <h4><span>Icon</span>Share it with your friends!</h4>
+                    <h4><img src='images/share.png' alt='share'></img> Share it with your friends!</h4>
                 </div>
             </div>
             <Footer name ="Restart" onClick = {() => {navigate('/')}} />

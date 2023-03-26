@@ -53,6 +53,9 @@
 .quiz-comment-share p {
     padding-bottom: 10px;
 }
+.quiz-comment-share p img{
+    width: 20px;
+}
 
 .quiz-details {
     padding: 30px 0;
@@ -174,5 +177,9 @@
         left: 50%;
         margin-top: -250px;
         margin-left: -250px;
+    }
+
+    .quiz-comment-share p img{
+        width: 24px;
     }
 }
